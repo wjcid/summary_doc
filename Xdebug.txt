@@ -1,0 +1,15 @@
+1、IDE设置
+xdebug安装
+xdebug 端口设置（注意端口占用问题）
+项目文件设置
+
+2、php.ini 扩展设置
+Xdebug下载安装
+**zend_extension 设置
+其它配置设置
+
+3、浏览器 debug设置
+插件安装
+右键选项中 配置IDE 等配置信息
+
+IDE添加断点   多点跟踪

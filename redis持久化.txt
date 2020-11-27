@@ -1,0 +1,15 @@
+1、快照
+
+2、AOF持久化
+
+文件同步
+appendfsunc选项及同步频率
+always 每个命令都要同步写入硬盘(机械硬盘每秒大约200，SSD几万个。每次只写一个命令，SSD慎用)
+everysec 每秒执行一次同步（硬盘写入频繁时，redis放慢自己速度以适应硬盘最大写入速度）
+no 操作系统来决定何时同步（缓冲区被填满时写入被阻塞，redis速度变慢，不推荐使用）
+
+缺陷：AOF文件体积的大小（过大时空间问题，重启执行还原操作的时间问题）
+
+bgrewrieaof(移除冗余命令 rewrite AOF，子进程性能问题内存占用问题，文件过大时OS挂起)
+auto-aof-rewrite-percentage 100、auto-aof-rewrite-min-size 64M（当AOF文件大于64M并且体积比上次重写
+后大了100%，执行bgrewrieaof）

@@ -1,0 +1,36 @@
+ Server IP :  47.56.149.214 ， Password :  wjc.052028 
+1、安装配置服务端shadowsocks
+ wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+ chmod +x shadowsocks-all.sh
+ ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+
+2、执行后，会提示输入源码语言，密码、端口、及加密方式等。
+（这里端口使用8989；源码选择的是python语言；加密方式选择aes-256-gcm；）
+本地默认1080 （阿里云安全组 配置开放1080 8989端口）
+
+3、设置防火墙端口开放
+    1.ufw allow 8989   2.ufw reload   3.ufw status
+
+4、本地下载配置shadowsocks客户端（浏览器无法访问大陆站点 500错误时  360网络诊断一下）
+
+启动命令：ssserver -c /etc/shadowsocks-python/config.json -d start
+关闭命令：ssserver -c /etc/shadowsocks-python/config.json -d stop
+卸载方法： ./shadowsocks-all.sh uninstall
+注意：启动失败 端口是否可用问题  netstat -nlpt 查看一下
+
+
+遇到的两问题
+1、500 Internal Privoxy Error
+Privoxy encountered an error while processing your request:
+Could not load template file no-server-data or one of its included components.
+Please contact your proxy administrator.
+If you are the proxy administrator, please put the required file(s)in the (confdir)/templates directory.
+ The location of the (confdir) directory is specified in the main Privoxy config file. 
+(It's typically the Privoxy install directory).
+通过360网络诊断解决
+
+2、shadowsocks客户端日志监控（由于目标主机主动拒绝，连接失败）
+    查看端口发现shadowsocks服务没启用（....笑......）
+    service XXX start（启动失败）（....懵......）
+   用上述总结启动命令成功 （....懵......）（....不知为何....）
+

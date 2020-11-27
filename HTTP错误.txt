@@ -1,0 +1,2 @@
+405 not allowed 
+error_page  405 =200 $uri;

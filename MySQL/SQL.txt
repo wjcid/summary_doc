@@ -1,0 +1,25 @@
+1、SQL Server (TOP number|percent),MySQL(limit),Oracle(where ROWNUM) 规定要返回的记录的数目
+2、_(通配符表示替换任意字符)例: g_og_e,[charlist] 字符列中的任何单一字符,
+[^charlist]或者[!charlist] 不在字符列中的任何单一字符
+下面的 SQL 语句选取 name 以 A 到 H 字母开头的网站：
+SELECT * FROM Websites WHERE name REGEXP '^[A-H]';
+下面的 SQL 语句选取 name 不以 A 到 H 字母开头的网站：
+SELECT * FROM Websites WHERE name REGEXP '^[^A-H]';
+3、BETWEEN 操作符用于选取介于两个值之间的数据范围内的值(各数据库对边界值的包含情况不同)。
+4、UNION 操作符用于合并两个或多个 SELECT 语句的结果集，UNION 操作符选取不同的值。
+如果允许重复的值，请使用 UNION ALL
+5、FOREIGN KEY - 保证一个表中的数据匹配另一个表中的值的参照完整性。
+6、SELECT INTO 语句从一个表复制数据，然后把数据插入到另一个新表中。
+MySQL 数据库不支持 SELECT ... INTO 语句，但支持 INSERT INTO ... SELECT 
+7、外键约束 FOREIGN KEY (P_Id) REFERENCES tabName(P_Id)
+8、CHECK 约束用于限制列中的值的范围。
+9、CREATE INDEX index_name ON table_name (column_name)
+10、仅仅需要删除表内的数据，但并不删除表本身TRUNCATE TABLE table_name（drop删结构）
+11、SQL Server 使用 IDENTITY 关键字来执行 auto-increment 任务。
+提示：要规定 "ID" 列以 10 起始且递增 5，请把 identity 改为 IDENTITY(10,5)
+12、视图CREATE VIEW view_name AS SELECT column_name(s) FROM table_name
+WHERE condition
+13、无法使用比较运算符来测试 NULL 值，比如 =、< 或 <>。我们必须使用 IS NULL 和 IS NOT NULL 操作符
+15、MID() 函数用于从文本字段中提取字符。MID(name,1,4)
+16、LEN() 函数返回文本字段中值的长度。MySQL 中函数为 LENGTH():
+17、ROUND() 函数用于把数值字段舍入为指定的小数位数。ROUND(column_name,decimals)

@@ -1,0 +1,25 @@
+1、修改配置文件
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+#在配置文件最后一行添加：
+skip-grant-tables
+
+2、重启mysql
+
+3、修改密码
+#首先连接MySQL
+mysql -u root
+#提示需要输入密码，直接回车即可
+use mysql;
+
+update mysql.user set authentication_string=PASSWORD('你的密码'), plugin='mysql_native_password' where user='root';
+
+flush privileges;
+#至此密码修改完成
+
+4、恢复配置文件并重启mysql
+#注释掉最后一行新加的配置
+#skip-grant-tables
+
+5、本地连接 mysql -uroot -p 
+XXX
+Welcome to the MySQL monitor.

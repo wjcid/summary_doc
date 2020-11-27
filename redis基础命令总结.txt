@@ -1,0 +1,28 @@
+Redis五大数据结构
+1、字符串string
+set  get   del
+
+2、列表list（值可重复）（有储存顺序）
+rpush(lpush)向右（左）侧添加，rpop(lpop)从右（左）侧弹出 
+例：rpush list-key item item1 item2
+lrange 取范围内的值 例：lrange list-key 0 -1
+lindex 取特定值  例：lindex list-key 3
+
+3、集合（成员不可重复）（无存储顺序）
+sadd 向集合中添加成员 例：sadd set-key item item1 item2 item3
+smembers 查看全部成员 例：smembers set-key
+sismember 查看某个值是否存在集合中  sismember set-key item
+srem 移除某个成员 例：srem set-key item2
+
+4、散列hash （一组key-value）
+批量添加时报错 不可：hset hash-key sub-key1 value1 sub-key2 value2
+hset 添加 例：hset hash-key sub-key1 value1
+hgetall 查看所有  例：hgetall hash-key
+hdel 移除某项 例：hdel hash-key sub-key1
+hget hash-key sub-key 查看单项
+
+5、有序集合（也可看成一组key-value value中数据类型为浮点数）
+zadd 添加集合 例：zadd zset-key 234 member4 345 member5 （可批量）
+zrange 取范围内的成员 例：zrange zset-key 0 -1 withscores
+zrangebyscore 根据分数范围取值  例：zrangebyscore zset-key 0 300 withscores
+zrem 移除某成员 例：zremzset-key member1 member2

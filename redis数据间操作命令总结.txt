@@ -1,0 +1,12 @@
+一、Zinterstore 命令
+多个有序集合的交集（也可用无序集合set 会将分值score 默认为1）
+ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX]
+destination（结果储存目标集合）
+numkeys （指定用于比较的集合数量）
+用于比较的集合key
+AGGREGATE （结果集score值展示形式）（默认相加，可改最小 最大值）
+例：
+zadd article-score
+zadd art-s
+zinterstore list1 2 article-score art-s aggregate max
+zrange list1 0 -1 withscores

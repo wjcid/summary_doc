@@ -1,0 +1,23 @@
+单个redis实例instance 1s只能处理100个命令
+
+sunionstore命令 2.4GHz  两个10000个集合 产生20000 耗时7ms
+
+
+
+二、更换故障主服务器
+1、向机器	B发送一个SAVE命令，创建一个快照。2、将快照文件发送给机器C在C上启动Redis
+3、让B成为C的从服务器
+或者将从服务器升级成主服务器
+
+三、Redis事务
+watch multi  exec  (以乐观锁的方式实现) 事务执行期间数据发生改变则重试
+
+四、非事务流水线
+pipeline() 传入true或不传时 使用 multi和exec包裹
+传入false时 流水线连接减少通信往返
+
+五、性能方面注意事项
+redis-benchmark性能测试
+cannot assign requested address 错误  创建了新连接
+或者不正确的使用数据结构
+

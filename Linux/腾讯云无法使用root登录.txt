@@ -1,0 +1,9 @@
+1、默认账号ubuntu登录
+
+2、执行sudo passwd root  输入密码（也可以在控制台更改）
+
+3、执行 sudo vi /etc/ssh/sshd_config
+
+4、找到PermitRootLogin without-password这一行，把后面的without-password改为yes，保存文件
+
+5、执行sudo service ssh restart

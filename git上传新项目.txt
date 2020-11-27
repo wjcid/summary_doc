@@ -1,0 +1,13 @@
+git config --global user.name "你的名字或昵称"
+git config --global user.email "你的邮箱"
+git clone "远程地址"  //克隆下载代码
+git status  //查看修改状态
+git init
+git remote add origin "远程路径"
+git remote rm origin(如果add失败则使用这个命令删除远程仓库)
+
+git add .
+git commit -m "介绍"
+
+git pull
+git push -u origin master
